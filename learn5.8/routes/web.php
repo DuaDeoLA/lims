@@ -14,6 +14,18 @@
 Route::get('/', function () {
     return view('admin.page');
 });
+Route::group(['prefix'=>'lims'],function (){
+    Route::group(['prefix'=>'nhanmau'],function(){
+        Route::get('danhsach','NhanMauController@getDanhsach');
+        Route::get('sua/{id}','NhanMauController@getSua');
+        Route::post('sua/{id}','NhanMauController@postSua');
+
+        Route::get('them','NhanMauController@getThem');
+        Route::post('them','NhanMauController@postThem');
+
+        Route::get('xoa/{id}','NhanMauController@getXoa');
+    });
+});
 Route::group(['prefix'=>'admin'], function (){
     Route::group(['prefix'=>'theloai'], function (){
         Route::get('danhsach','TheLoaiController@getDanhsach');
@@ -49,6 +61,7 @@ Route::group(['prefix'=>'admin'], function (){
         Route::get('xoa/{id}','TinTucController@getXoa');
     });
 
+
     Route::group(['prefix'=>'tintuc'], function (){
         Route::get('danhsach','TinTucController@getDanhsach');
 
@@ -78,6 +91,6 @@ Route::group(['prefix'=>'admin'], function (){
     });
 });
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

@@ -29,7 +29,6 @@
                 <tbody>
                 @foreach($benhnhan as $bn)
                     <tr>
-
                         <td>{{$bn->id}}</td>
                         <td>{{$bn->hoten}}</td>
                         <td>{{$bn->namsinh}}</td>

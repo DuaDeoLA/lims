@@ -93,6 +93,11 @@
       <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/nikic/php-parser" />
       <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/nunomaduro/collision" />
       <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/fideloper/proxy" />
+      <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/dompdf/dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/phenx/php-font-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/barryvdh/laravel-dompdf" />
+      <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/phenx/php-svg-lib" />
+      <excludeFolder url="file://$MODULE_DIR$/learn5.8/vendor/sabberworm/php-css-parser" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

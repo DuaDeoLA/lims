@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\LoaiTin;
+use App\TestNhanh;
 use Illuminate\Http\Request;
 
 class AjaxController extends Controller
@@ -14,5 +15,9 @@ class AjaxController extends Controller
         {
            echo "<option value='".$lt->id."'>".$lt->Ten."</option>";
         }
+    }
+    public function getPrint($id){
+        $testnhanh = TestNhanh::find($id);
+        return view('lims/testnhanh/print',['testnhanh'=>$testnhanh]);
     }
 }

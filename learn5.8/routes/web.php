@@ -25,7 +25,20 @@ Route::group(['prefix'=>'lims'],function (){
 
         Route::get('xoa/{id}','NhanMauController@getXoa');
     });
+    Route::group(['prefix'=>'testnhanh'],function(){
+        Route::get('danhsach','TestNhanhController@getDanhsach');
+
+        Route::get('sua/{id}','TestNhanhController@getSua');
+        Route::post('sua/{id}','TestNhanhController@postSua');
+
+        Route::get('xoa/{id}','NhanMauController@getXoa');
+    });
+    Route::group(['prefix'=>'ajax'], function (){
+        Route::get('print/{id}','AjaxController@getPrint');
+    });
 });
+
+
 Route::group(['prefix'=>'admin'], function (){
     Route::group(['prefix'=>'theloai'], function (){
         Route::get('danhsach','TheLoaiController@getDanhsach');

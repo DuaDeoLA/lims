@@ -8,7 +8,9 @@ class Patient extends Model
 {
     protected $table="patient";
     public function KhaiBaoYT(){
-        $this->hasMany('App\KhaBaoYT','idPatient','id');
+       return  $this->hasMany('App\KhaiBaoYT','idPatient','id');
     }
-
+    public function TestNhanh(){
+        return $this->hasManyThrough('App\TestNhanh','idPatient','id');
+    }
 }

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     <style>
-        p{
-            font-size: 1rem;
+        p {
+            font-size: 1.4rem;
             text-align: center;
             margin-top: 0pt;
             padding-top: 0;
@@ -17,6 +17,41 @@
             padding-bottom: 0;
             line-height: 1.2;
         }
+
+        th {
+            font-size: 1.4rem;
+        }
+
+        td {
+            font-size: 1.4rem;
+        }
+
+        .hanhchanh {
+            padding: 1.4rem;
+        }
+
+        .hanhchanh td {
+            font-size: 1.4rem;
+            padding-right: 1em;
+            padding-bottom: 1em;
+        }
+        .footer{
+            position: absolute;
+            bottom:0;
+            width: 100%;
+            height: 15%;
+        }
+        table.table-bordered{
+            border:1px solid black;
+        }
+        table.table-bordered > thead > tr > th{
+            border:1px solid black;
+        }
+        table.table-bordered > tbody > tr > td{
+            border:1px solid black;
+        }
+
+
     </style>
 </head>
 
@@ -25,26 +60,39 @@
     <div class="row justify-content-center">
         <table>
             <tr>
-                <td><img  width="150" src="{{asset('/image/lims/print/logo_lu.png')}}" alt="Logo Lê Uyên"></td>
+                <td><img width="200" src="{{asset('/image/lims/print/logo_lu.png')}}" alt="Logo Lê Uyên"></td>
                 <td>
                     <p style="text-align: center; margin-top: 0pt; padding-top: 0; margin-bottom: 0pt; padding-bottom: 0; line-height: 1.2;">
-                        <strong><span style="color: #ff0000; font-size: 18pt;">PHÒNG XÉT NGHIỆM LÊ UYÊN</span></strong></p>
+                        <strong><span style="color: #ff0000; font-size: 1.5em;">PHÒNG XÉT NGHIỆM LÊ UYÊN</span></strong>
+                    </p>
                     <p style="text-align: center; margin-top: 0pt; padding-top: 0; margin-bottom: 0pt; padding-bottom: 0; line-height: 1.2;">
-                        <span style="color: #000000; font-size: 13pt;">Địa chỉ: 229AA Nguyễn Văn Cừ, P.An Bình,Q.Ninh Kiều, TP Cần Thơ</span> </p>
-                    <p style="text-align: center; margin-top: 0pt; padding-top: 0; margin-bottom: 0pt; padding-bottom: 0; line-height: 1.2;">  <span style="color: #000000; font-size: 13pt;"> Điện thoại: 0868.074.115 – 0902.904.587</span></p>
+                        <span style="color: #000000; font-size: 1em;">Địa chỉ: 229AA Nguyễn Văn Cừ, P.An Bình,Q.Ninh Kiều, TP Cần Thơ</span>
+                    </p>
                     <p style="text-align: center; margin-top: 0pt; padding-top: 0; margin-bottom: 0pt; padding-bottom: 0; line-height: 1.2;">
-                        <span style="color: #000000; font-size: 13pt;">Email: xetnghiemleuyen@gmail.com</span> <span style="display: inline-block; height: 1em;"><span style="display: none;">.</span></span></p>
+                        <span style="color: #000000; font-size: 1em;"> Điện thoại: 0868.074.115 – 0902.904.587</span>
+                    </p>
+                    <p style="text-align: center; margin-top: 0pt; padding-top: 0; margin-bottom: 0pt; padding-bottom: 0; line-height: 1.2;">
+                        <span style="color: #000000; font-size: 1em;">Email: xetnghiemleuyen@gmail.com</span></p>
                 </td>
+            </tr>
+            <tr>
             </tr>
         </table>
     </div>
-    <div class="row">
+    <div class="row justify-content-center">
+        <table>
+            <tr>
+                <h1>KẾT QUẢ XÉT NGHIỆM MIỄN DỊCH</h1>
+            </tr>
+        </table>
+    </div>
+    <div class="row hanhchanh">
         <table>
             <tbody>
             <tr>
-                <td width="200px"><p></p> Họ tên: {{$testnhanh->Patient->hoten}}</td>
-                <td width="200px">Năm sinh: {{$testnhanh->Patient->namsinh}}</td>
-                <td width="200px">Giới tinh:
+                <td>Họ tên: <strong>{{$testnhanh->Patient->hoten}}</strong></td>
+                <td>Năm sinh: {{$testnhanh->Patient->namsinh}}</td>
+                <td>Giới tinh:
                     @if($testnhanh->Patient->gioitinh == 1)
                         Nam
                     @else
@@ -64,26 +112,54 @@
             </tbody>
         </table>
     </div>
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-        <tr>
-            <th>STT</th>
-            <th>Tên xét nghiệm</th>
-            <th>Kết quả</th>
-            <th>Đơn vị</th>
-            <th>Trị số bình thường</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>1</td>
-            <td>Test nhanh kháng nguyên Sars-cov-2</td>
-            <td>{{$testnhanh->ketqua}}</td>
-            <td></td>
-            <td></td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="row">
+        <table id="example" class="table table-bordered" style="width:100%;">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tên xét nghiệm</th>
+                <th>Kết quả</th>
+                <th>Đơn vị</th>
+                <th>Trị số bình thường</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td><strong>Test nhanh kháng nguyên Covid-19</strong></td>
+                <td>
+                    @if($testnhanh->ketqua== 0 & $testnhanh->ketqua !="")
+                        <strong>Âm tính</strong>
+                    @endif
+                    @if($testnhanh->ketqua== 1)
+                        <span class="text-danger">"Dương tính"</span>
+                    @endif
+                </td>
+                <td></td>
+                <td><strong>Âm tính</strong></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <p style="text-align: left">
+            *** Lưu ý: Kết quả chỉ có giá trị tại thời điểm xét nghiệm, do đó cần tiếp tục theo dõi diễn tiến bệnh (mệt
+            mỏi, khó thở, mất khứu giác, mất vị giác,…) Thực hiện các biện pháp phòng dịch, tuân thủ 5K theo quy định.
+            Kết quả test nhanh chỉ có giá trị sàng lọc ban đầu Covid-19
+        </p>
+    </div>
+    <div class="footer">
+        <div class="row">
+            <div class="ml-auto mr-4 p-2 text-center">
+                <p>Cần Thơ, 06 giờ 05 phút ngày 05 tháng 10 năm 2021</p>
+                <p><strong>Người thực hiện</strong></p>
+                <br>
+                <br>
+                <br>
+                <p>{{$user_login->name}}</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

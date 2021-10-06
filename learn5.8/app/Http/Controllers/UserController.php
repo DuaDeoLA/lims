@@ -33,7 +33,7 @@ class UserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'username' => ['required', 'string', 'max:255','unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed']
         ]);
         $user = new User;
         $user->name= $request->name;
@@ -42,6 +42,6 @@ class UserController extends Controller
         $user->password = Hash::make($request->password);
         $user->level = $request->level;
         $user->save();
-        return view('admin/user/them')->with('thongbao','Thêm người dùng thành công');
+        return redirect('admin/user/them')->with('thongbao','Thêm người dùng thành công');
     }
 }

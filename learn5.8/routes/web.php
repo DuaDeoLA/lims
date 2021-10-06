@@ -14,7 +14,18 @@
 Route::get('/', function () {
     return view('admin.page');
 });
-Route::group(['prefix'=>'lims'],function (){
+
+Route::get('/lims/dangnhap','DangNhapController@getDanhsach');
+Route::post('/lims/dangnhap','DangNhapController@postDangNhap');
+Route::get('/lims/dangxuat','DangNhapController@dangxuat');
+
+
+
+Route::get('/lims/dangnhap', function () {
+    return view('lims.login.login');
+});
+
+Route::group(['prefix'=>'lims','middleware'=>'limsLogin'],function (){
     Route::group(['prefix'=>'nhanmau'],function(){
         Route::get('danhsach','NhanMauController@getDanhsach');
         Route::get('sua/{id}','NhanMauController@getSua');
@@ -104,6 +115,6 @@ Route::group(['prefix'=>'admin'], function (){
     });
 });
 
-//Auth::routes();
+Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');

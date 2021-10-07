@@ -79,6 +79,12 @@
             </tr>
         </table>
     </div>
+    <div class="row">
+        <div class="ml-auto mr-4 p-2 text-center">
+            <img src="data:image/png;base64,{{DNS1D::getBarcodePNG($testnhanh->code, 'C39')}}" alt="barcode" /><br><br>
+            <p>{{$testnhanh->code}}</p>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <table>
             <tr>
@@ -132,7 +138,7 @@
                         <strong>Âm tính</strong>
                     @endif
                     @if($testnhanh->ketqua== 1)
-                        <span class="text-danger">"Dương tính"</span>
+                        <span class="text-danger">Dương tính</span>
                     @endif
                 </td>
                 <td></td>
@@ -151,7 +157,7 @@
     <div class="footer">
         <div class="row">
             <div class="ml-auto mr-4 p-2 text-center">
-                <p>Cần Thơ, 06 giờ 05 phút ngày 05 tháng 10 năm 2021</p>
+                <p>Cần Thơ, {{ now()->hour }} giờ {{ now()->minute }}phút ngày {{now()->day }} tháng {{now()->month }} năm {{now()->year}}</p>
                 <p><strong>Người thực hiện</strong></p>
                 <br>
                 <br>

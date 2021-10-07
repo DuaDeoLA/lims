@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\LoaiTin;
 use App\TestNhanh;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AjaxController extends Controller
 {
@@ -18,6 +19,11 @@ class AjaxController extends Controller
     }
     public function getPrint($id){
         $testnhanh = TestNhanh::find($id);
-        return view('lims/testnhanh/print',['testnhanh'=>$testnhanh]);
+        $now = Carbon::now();
+        $day= $now->day;
+        $moth = $now->month;
+        $year=$now->year;
+        $hour = $now->hour;
+        return view('lims/testnhanh/print',['testnhanh'=>$testnhanh,'hour'=>$hour]);
     }
 }

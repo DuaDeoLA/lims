@@ -6,6 +6,8 @@ use App\KhaiBaoYT;
 use App\Patient;
 use App\TestNhanh;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class NhanMauController extends Controller
 {
@@ -16,9 +18,15 @@ class NhanMauController extends Controller
     public function postThem(Request $request){
         $this->validate($request, [
             'hoten' => 'required|min:3|max:100',
-            'namsinh'=>'required',
+            'namsinh'=>'required|numeric|min:4',
             'diachi'=>'required',
-            'dienthoai'=>'required',
+            'dienthoai'=>'required|min:10',
+        ],[
+            'hoten.required' =>'Chưa nhập họ tên',
+            'hoten.min' =>'Họ tên quá ngắn',
+            'namsinh.required' => 'Chưa nhập năm sinh',
+            'namsinh.numeric' => 'Năm sinh phải là số',
+            'dienthoai.required'=> 'Điện thoại không đúng'
         ]);
         //Tạo bệnh nhân
         $benhnhan = new Patient;
@@ -27,6 +35,7 @@ class NhanMauController extends Controller
         $benhnhan->gioitinh=$request->gioitinh;
         $benhnhan->diachi=$request->diachi;
         $benhnhan->dienthoai=$request->dienthoai;
+        $benhnhan->idDiaDiem=1;
         $benhnhan->save();
         //Tạo khai báo
         $khaibao = new KhaiBaoYT;
@@ -53,21 +62,39 @@ class NhanMauController extends Controller
             $testnhanh->giaxn="";
             $testnhanh->thutien=0;
             $testnhanh->dain=0;
+            $testnhanh->code= $this->generateCode();
+            $testnhanh->link = "";
+            $testnhanh->idUser= Auth::user()->getAuthIdentifier();
             $testnhanh->save();
         }
         return redirect('lims/nhanmau/them')->with('thongbao','Đã khai báo y tế và thêm bệnh nhân');
     }
     public function getDanhSach(){
-        $benhnhan =Patient::all();
+        $benhnhan =Patient::orderBy('id','desc')->get();
         return view('lims/nhanmau/danhsach',['benhnhan'=>$benhnhan]);
     }
     public function getXoa($id){
         $benhnhan = Patient::find($id);
-        $khaibao= $benhnhan->KhaiBaoYT;
-       foreach ($khaibao as $kb){
-          $kb->delete();
-       }
-       $benhnhan->delete();
-       return  redirect('lims/nhanmau/danhsach')->with('thongbao','Đã xóa bệnh nhân');
+        if($benhnhan->Testnhanh->isEmpty() == 1){
+            $khaibao= $benhnhan->KhaiBaoYT;
+            foreach ($khaibao as $kb){
+                $kb->delete();
+            }
+            $benhnhan->delete();
+            return  redirect('lims/nhanmau/danhsach')->with('thongbao','Đã xóa bệnh nhân');
+        } else{
+            return  redirect('lims/nhanmau/danhsach')->with('thongbao','Đã có kết quả test nhanh, không thể xóa');
+        }
+    }
+    public function generateCode(){
+        $Tendiadiem="LU";
+        $latest = TestNhanh::latest()->first();
+        $number = 1;
+        if(isset($latest)){
+            $number = $latest->id + 1;
+        }
+        $form= Carbon::now()->toDateTimeString();
+        $date = Carbon::parse($form)->format('Ymd');
+        return $Tendiadiem.$date.$number;
     }
 }

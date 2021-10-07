@@ -20,31 +20,19 @@
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Thể loại
+                    Nhận mẫu
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin/theloai/danhsach">Danh sách</a>
-                    <a class="dropdown-item" href="admin/theloai/them">Thêm</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="lims/nhanmau/danhsach">Danh sách</a>
+                    <a class="dropdown-item" href="lims/nhanmau/them">Thêm</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Loại tin
+                    Covid 19
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin/loaitin/danhsach">Danh sách</a>
-                    <a class="dropdown-item" href="admin/loaitin/them">Thêm</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tin tức
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="admin/tintuc/danhsach">Danh sách</a>
-                    <a class="dropdown-item" href="admin/tintuc/them">Thêm</a>
+                    <a class="dropdown-item" href="lims/testnhanh/danhsach">Danh sách test nhanh</a>
                 </div>
             </li>
 

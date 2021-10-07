@@ -19,7 +19,12 @@ class DangNhapController extends Controller
                 'password.required' =>'Chưa nhập password'
         ]);
         if(Auth::attempt(['email' => $request->email,'password'=>$request->password])){
-            return redirect('lims/nhanmau/them');
+            $user= Auth::user();
+            if($user->level==1){
+                return redirect('admin/theloai/danhsach');
+            } else{
+                return redirect('lims/nhanmau/them');
+            }
         } else{
             return  redirect('lims/dangnhap')->with('thongbao','Đăng nhập không thành công');
         }

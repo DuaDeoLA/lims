@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin.page');
+    return view('lims.login.login');
 });
 
 Route::get('/lims/dangnhap','DangNhapController@getDanhsach');
@@ -42,15 +42,18 @@ Route::group(['prefix'=>'lims','middleware'=>'limsLogin'],function (){
         Route::get('sua/{id}','TestNhanhController@getSua');
         Route::post('sua/{id}','TestNhanhController@postSua');
 
-        Route::get('xoa/{id}','NhanMauController@getXoa');
+        Route::get('xoa/{id}','TestNhanhController@getXoa');
     });
     Route::group(['prefix'=>'ajax'], function (){
         Route::get('print/{id}','AjaxController@getPrint');
+        Route::get('code',function (){
+            echo '<img src="' . DNS1D::getBarcodePNG('4', 'C39+',3,33) . '" alt="barcode"   />';
+        });
     });
 });
 
 
-Route::group(['prefix'=>'admin'], function (){
+Route::group(['prefix'=>'admin','middleware'=>'limsLogin'], function (){
     Route::group(['prefix'=>'theloai'], function (){
         Route::get('danhsach','TheLoaiController@getDanhsach');
         Route::get('sua/{id}','TheLoaiController@getSua');

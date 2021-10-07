@@ -7,14 +7,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
         @if(session('thongbao'))
             <div class="alert alert-success">
                 {{session('thongbao')}}
             </div>
         @endif
-        <div class="row">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+            <table id="example" class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed p-5" style="width: 100%;">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -40,7 +38,5 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
 @endsection
 

@@ -23,8 +23,12 @@ class CreateTestnhanh extends Migration
             $table->string('giaxn')->default(null);
             $table->integer('thutien');
             $table->integer('dain');
+            $table->string('code');
+            $table->string('link');
+            $table->unsignedBigInteger('idUser');
             $table->timestamps();
             $table->foreign('idPatient')->references('id')->on('patient');
+            $table->foreign('idUser')->references('id')->on('users');
         });
     }
 

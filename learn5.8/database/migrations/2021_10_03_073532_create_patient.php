@@ -20,6 +20,7 @@ class CreatePatient extends Migration
             $table->integer('gioitinh');
             $table->string('diachi');
             $table->string('dienthoai');
+            $table->unsignedBigInteger('idDiaDiem');
             $table->timestamps();
         });
     }

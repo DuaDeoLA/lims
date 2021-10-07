@@ -11,6 +11,6 @@ class Patient extends Model
        return  $this->hasMany('App\KhaiBaoYT','idPatient','id');
     }
     public function TestNhanh(){
-        return $this->hasManyThrough('App\TestNhanh','idPatient','id');
+        return $this->hasMany('App\TestNhanh','idPatient','id');
     }
 }

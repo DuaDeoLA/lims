@@ -7,14 +7,18 @@
 @endsection
 
 @section('content')
-    <div class="container">
+
         @if(session('thongbao'))
             <div class="alert alert-success">
                 {{session('thongbao')}}
             </div>
         @endif
-        <div class="row">
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+        @if(session('loi'))
+            <div class="alert alert-danger">
+                {{session('loi')}}
+            </div>
+        @endif
+            <table class="table table-striped table-bordered dt-responsive nowrap dataTable no-footer dtr-inline collapsed p-5" style="width:100%">
                 <thead>
                 <tr>
                     <th>ID</th>
@@ -43,14 +47,12 @@
                             @endif
                         </td>
                         <td><a href="lims/testnhanh/sua/{{$tn->id}}">Sửa</a></td>
-                        <td><a href="lims/testnhanh/xoa">Xóa</a></td>
+                        <td><a href="lims/testnhanh/xoa/{{$tn->id}}">Xóa</a></td>
                         <td><button name="{{$tn->id}}" class="print"> Print </button></td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
-        </div>
-    </div>
 @endsection
 @section('script')
     <script>

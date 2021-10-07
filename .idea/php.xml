@@ -94,6 +94,7 @@
       <path value="$PROJECT_DIR$/learn5.8/vendor/barryvdh/laravel-dompdf" />
       <path value="$PROJECT_DIR$/learn5.8/vendor/phenx/php-svg-lib" />
       <path value="$PROJECT_DIR$/learn5.8/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/learn5.8/vendor/milon/barcode" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

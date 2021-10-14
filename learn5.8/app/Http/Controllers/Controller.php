@@ -15,7 +15,7 @@ class Controller extends BaseController
         $this->DangNhap();
     }
     function DangNhap(){
-        if(Auth::check()){
+        if(Auth::user()){
             view()->share('user_login',Auth::user());
         }
     }

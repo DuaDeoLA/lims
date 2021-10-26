@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -51,8 +50,6 @@
         table.table-bordered > tbody > tr > td{
             border:1px solid black;
         }
-
-
     </style>
 </head>
 
@@ -89,7 +86,7 @@
     <div class="row justify-content-center">
         <table>
             <tr>
-                <h1>KẾT QUẢ XÉT NGHIỆM MIỄN DỊCH</h1>
+                <h1>KẾT QUẢ XÉT NGHIỆM</h1>
             </tr>
         </table>
     </div>
@@ -99,7 +96,7 @@
             <tr>
                 <td>Họ tên: <strong>{{$testnhanh->Patient->hoten}}</strong></td>
                 <td>Năm sinh: {{$testnhanh->Patient->namsinh}}</td>
-                <td>Giới tinh:
+                <td>Giới tính:
                     @if($testnhanh->Patient->gioitinh == 1)
                         Nam
                     @else
@@ -160,6 +157,8 @@
             <div class="ml-auto mr-4 p-2 text-center">
                 <p>Cần Thơ, {{ now()->hour }} giờ {{ now()->minute }}phút ngày {{now()->day }} tháng {{now()->month }} năm {{now()->year}}</p>
                 <p><strong>Người thực hiện</strong></p>
+                <br>
+                <br>
                 <br>
                 <br>
                 <br>

@@ -12,8 +12,9 @@
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
+    <link rel="stylesheet" href="{{asset('/datatable/datatables.css')}}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
 </head>
 <body>
 <!--/header-->
@@ -23,17 +24,13 @@
 <div class="container-fluid">
     @yield('content')
 </div>
-<script src="{{asset('js/jquery-3.6.0.min.js')}}"> </script>
-<script src="{{asset('js/bootstrap.js')}}"> </script>
-<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+<script src="{{asset('js/admin.js')}}"> </script>
+<script src="{{asset('datatable/datatables.js')}}"> </script>
 <script src="{{asset('ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('jqueryPrint/jQuery.print.min.js')}}"></script>
 <script>
     $(document).ready(function() {
-        $('#example').DataTable();
+        // $('#example').DataTable();
     } );
 </script>
 @yield('script')

@@ -23,7 +23,6 @@ class UserController extends Controller
     {
 
     }
-    //Thêm
     public function getThem(){
         return view('admin.user.them');
     }

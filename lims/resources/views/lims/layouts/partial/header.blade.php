@@ -1,5 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="lims/nhanmau/danhsach/{{session()->get('idDiadiem')}}">PXN LÊ UYÊN</a>
+
+        @if(session()->get('idDiadiem') == 1)
+            <span class="text-success">ĐỊA ĐIỂM LÊ UYÊN</span>
+        @endif
+        @if(session()->get('idDiadiem') == 2)
+                <span class="text-success">ĐỊA ĐIỂM PHÚ THỨ</span>
+            @endif
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

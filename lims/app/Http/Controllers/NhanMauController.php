@@ -18,7 +18,7 @@ class NhanMauController extends Controller
         return view('lims/nhanmau/them');
     }
     public function postThem(Request $request){
-        $idDiadiem=$request->session()->get('idDiadiem');;
+        $idDiadiem=$request->session()->get('idDiadiem');
         $this->validate($request, [
             'hoten' => 'required|min:3|max:100',
             'namsinh'=>'required|numeric|min:4',
@@ -38,7 +38,7 @@ class NhanMauController extends Controller
         $benhnhan->gioitinh=$request->gioitinh;
         $benhnhan->diachi=$request->diachi;
         $benhnhan->dienthoai=$request->dienthoai;
-        $benhnhan->idDiaDiem= $idDiadiem;;
+        $benhnhan->idDiaDiem= $idDiadiem;
         $benhnhan->save();
         //Tạo khai báo
         $khaibao = new KhaiBaoYT;
@@ -95,6 +95,8 @@ class NhanMauController extends Controller
         $request->session()->put('idDiadiem', $id);
         $benhnhan =Patient::where('idDiaDiem',$id)
         ->orderBy('id','desc')->get();
+        //echo $id;
+        //dd($benhnhan);
         return view('lims/nhanmau/danhsach',['benhnhan'=>$benhnhan]);
     }
     public function getXoa($id){
@@ -114,7 +116,7 @@ class NhanMauController extends Controller
         if($id==1){
             $Tendiadiem="LU";
         }
-        if($id= 2){
+        if($id==2){
             $Tendiadiem="PT";
         }
         $latest = TestNhanh::latest()->first();

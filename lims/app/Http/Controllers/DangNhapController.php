@@ -20,8 +20,9 @@ class DangNhapController extends Controller
         ]);
         if(Auth::attempt(['email' => $request->email,'password'=>$request->password])){
             $user= Auth::user();
+            $request->session()->put('idUser', Auth::id());
             if($user->level==1){
-                return redirect('admin/theloai/danhsach');
+                return redirect('lims.donvi.danhsach');
             } else{
                 return view('lims.donvi.danhsach');
             }

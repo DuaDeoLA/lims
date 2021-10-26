@@ -7,6 +7,7 @@ use App\Patient;
 use App\TestNhanh;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AjaxController extends Controller
 {
@@ -40,8 +41,10 @@ class AjaxController extends Controller
         $to = Carbon::parse($to);
         //echo $from;
         //echo $to;
-        $testnhanh=TestNhanh::whereBetween('created_at', [$from, $to])->get();
-        //dd($testnhanh);
+        $testnhanh=TestNhanh::whereBetween('created_at', [$from, $to])
+            ->where('idUser',session()->get('idUser'))
+            ->get();
+        //echo session()->get('idUser');
         return view('lims/testnhanh/fromD2D',['testnhanh'=>$testnhanh]);
     }
 }

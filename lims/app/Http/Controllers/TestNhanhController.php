@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TestNhanh;
 use App\User;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -11,13 +12,17 @@ use Illuminate\Support\Facades\Auth;
 
 class TestNhanhController extends Controller
 {
-    //
     public function getDanhsach()
     {
         $user_id = Auth::id();
-        $testnhanh =TestNhanh::whereDate('created_at', Carbon::today())
-            ->where('idUser',$user_id)
-            ->get();
+        if(Auth::user()->level ==1){
+            $testnhanh =TestNhanh::whereDate('created_at', Carbon::today())
+                ->get();
+        }else{
+            $testnhanh =TestNhanh::whereDate('created_at', Carbon::today())
+                ->where('idUser',$user_id)
+                ->get();
+        }
         return view('lims/testnhanh/danhsach',['testnhanh'=>$testnhanh]);
     }
 
@@ -42,11 +47,10 @@ class TestNhanhController extends Controller
                 $testnhanh->delete();
                 return redirect('lims/testnhanh/danhsach')->with('thongbao','Đã xóa thành công');
             } else{
-                return redirect('lims/testnhanh/danhsach')->with('thongbao','Đã nhập kết quả không được xóa, liên hệ admin');
+                return redirect('lims/testnhanh/danhsach')->with('thongbao','Liên hệ admin để xóa');
             }
         } else{
-            $testnhanh->delete();
-            return redirect('lims/testnhanh/danhsach')->with('thongbao','Đã xóa thành công');
+            return redirect('lims/testnhanh/danhsach')->with('thongbao','Chưa nhập kết quả');
         }
     }
     public function getPrint($id){
@@ -67,5 +71,14 @@ class TestNhanhController extends Controller
                 ->get();
             return view('lims/testnhanh/danhsach',['testnhanh'=>$testnhanhs])->with('thongbao','Chưa nhập kết quả');
         }
+    }
+    public function exportBillPDF($id){
+        $testnhanh = TestNhanh::find($id);
+        $now = Carbon::now();
+        $day= $now->day;
+        $moth = $now->month;
+        $year=$now->year;
+        $hour = $now->hour;
+        return view('lims/testnhanh/bill',['testnhanh'=>$testnhanh,'hour'=>$hour]);
     }
 }
